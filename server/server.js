@@ -11,7 +11,7 @@ import cartRouter from "./routes/cartRoute.js";
 import addressRouter from "./routes/addressRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import { stripeWebhooks } from "./controllers/orderController.js";
-
+import cookieParser from "cookie-parser";
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -19,12 +19,19 @@ await connectDB();
 await connectCloudinary();
 
 // Allow multiple origins
-const allowedOrigins = ["https://green-cart-full-stack.vercel.app", ""];
+// const allowedOrigins = ["https://green-cart-full-stack.vercel.app", ""];
+app.use(
+  cors({
+    origin: "https://green-cart-full-stack.vercel.app",
+    credentials: true,
+  }),
+);
 
 app.post("/stripe", express.raw({ type: "application/json" }), stripeWebhooks);
 
 // Middleware configuration
 app.use(express.json());
+
 app.use(cookieParser());
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 
