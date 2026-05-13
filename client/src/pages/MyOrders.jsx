@@ -3,6 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import { dummyOrders } from "../assets/assets";
 import Layer from "../utils/Layer";
 import { useTranslation } from "react-i18next";
+import LazyImage from "../components/LazyImage";
 const MyOrders = () => {
   const { t } = useTranslation();
   const [myOrders, setMyOrders] = useState([]);
@@ -37,8 +38,12 @@ const MyOrders = () => {
           className="border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-4xl"
         >
           <p className="flex justify-between md:items-center text-gray-400 md:font-medium max-md:flex-col">
-            <span>{t("orderId")} : {order._id}</span>
-            <span>{t("payment")} : {order.paymentType}</span>
+            <span>
+              {t("orderId")} : {order._id}
+            </span>
+            <span>
+              {t("payment")} : {order.paymentType}
+            </span>
             <span>
               {t("totalAmount")} : {currency}
               {order.amount}
@@ -53,7 +58,7 @@ const MyOrders = () => {
             >
               <div className="flex items-center mb-4 md:mb-0">
                 <div className="bg-primary/10 p-4 rounded-lg">
-                  <img
+                  <LazyImage
                     src={item.product.image[0]}
                     alt=""
                     className="w-16 h-16"
@@ -63,14 +68,22 @@ const MyOrders = () => {
                   <h2 className="text-xl font-medium text-gray-800">
                     {item.product.name}
                   </h2>
-                  <p>{t("category")}: {item.product.category}</p>
+                  <p>
+                    {t("category")}: {item.product.category}
+                  </p>
                 </div>
               </div>
 
               <div className="flex flex-col justify-center md:ml-8 mb-4 md:mb-0">
-                <p>{t("quantity")}: {item.quantity || "1"}</p>
-                <p>{t("status")}: {order.status}</p>
-                <p>{t("date")}: {new Date(order.createdAt).toLocaleDateString()}</p>
+                <p>
+                  {t("quantity")}: {item.quantity || "1"}
+                </p>
+                <p>
+                  {t("status")}: {order.status}
+                </p>
+                <p>
+                  {t("date")}: {new Date(order.createdAt).toLocaleDateString()}
+                </p>
               </div>
               <p className="text-primary text-lg font-medium">
                 {t("amount")}: {currency}

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { assets, categories } from '../../assets/assets';
 import { useAppContext } from '../../context/AppContext';
 import toast from 'react-hot-toast';
+import LazyImage from '../../components/LazyImage';
 
 const AddProduct = () => {
 
@@ -68,7 +69,7 @@ const AddProduct = () => {
                                 }}
                                 type="file" id={`image${index}`} hidden />
 
-                                <img className="max-w-24 cursor-pointer" src={files[index] ? URL.createObjectURL(files[index]) : assets.upload_area} alt="uploadArea" width={100} height={100} />
+                                <LazyImage className="max-w-24 cursor-pointer" src={files[index] ? URL.createObjectURL(files[index]) : assets.upload_area} alt="uploadArea" width={100} height={100} />
                             </label>
                         ))}
                     </div>

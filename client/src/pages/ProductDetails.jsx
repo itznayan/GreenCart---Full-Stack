@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoMdArrowDropleftCircle } from "react-icons/io";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import LazyImage from "../components/LazyImage";
 
 const ProductDetails = () => {
   const { t } = useTranslation();
@@ -97,7 +98,7 @@ const ProductDetails = () => {
                     className={`border max-w-24 rounded overflow-hidden cursor-pointer 
                       ${i === index ? "border-primary" : "border-gray-400/30"}`}
                   >
-                    <img src={img} alt="" />
+                    <LazyImage src={img} alt="" />
                   </div>
                 ))}
               </div>
@@ -137,7 +138,7 @@ const ProductDetails = () => {
                     }}
                     className="flex w-fit h-fit items-center justify-center rounded overflow-hidden z-10"
                   >
-                    <img
+                    <LazyImage
                       src={product.image[index]}
                       alt="product"
                       className="max-w-[400px]"
@@ -164,7 +165,7 @@ const ProductDetails = () => {
                 {Array(5)
                   .fill("")
                   .map((_, i) => (
-                    <img
+                    <LazyImage
                       key={i}
                       src={i < 4 ? assets.star_icon : assets.star_dull_icon}
                       className="md:w-4 w-3.5"

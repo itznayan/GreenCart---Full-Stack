@@ -5,6 +5,7 @@ import { assets } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import LazyImage from "./LazyImage";
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
@@ -76,7 +77,7 @@ const Navbar = () => {
       <div className="flex relative items-center justify-between px-6 py-6">
         {/* LOGO */}
         <NavLink to="/" onClick={() => setOpen(false)}>
-          <img className="h-14" src={assets.logo} alt="logo" />
+          <LazyImage className="h-14" src={assets.logo} alt="logo" />
         </NavLink>
 
         {/* DESKTOP */}
@@ -177,7 +178,7 @@ const Navbar = () => {
               type="text"
               placeholder={t("search")}
             />
-            <img src={assets.search_icon} className="w-4" />
+            <LazyImage src={assets.search_icon} className="w-4" />
           </div>
 
           {/* CART */}
@@ -185,7 +186,7 @@ const Navbar = () => {
             onClick={() => navigate("/cart")}
             className="relative cursor-pointer"
           >
-            <img src={assets.nav_cart_icon} className="w-6" />
+            <LazyImage src={assets.nav_cart_icon} className="w-6" />
             <span className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full flex items-center justify-center">
               {getCartCount()}
             </span>
@@ -194,7 +195,7 @@ const Navbar = () => {
           {/* PROFILE */}
           {user && (
             <div className="relative group">
-              <img src={assets.profile_icon} className="w-10" />
+              <LazyImage src={assets.profile_icon} className="w-10" />
               <ul className="hidden group-hover:block absolute right-0 top-10 bg-white border py-2 w-32 rounded-md text-sm">
                 {user.role === "customer" && (
                   <li
@@ -228,14 +229,14 @@ const Navbar = () => {
         {/* MOBILE */}
         <div className="flex sm:hidden items-center gap-5">
           <div onClick={() => navigate("/cart")} className="relative">
-            <img src={assets.nav_cart_icon} className="w-6" />
+            <LazyImage src={assets.nav_cart_icon} className="w-6" />
             <span className="absolute -top-2 -right-3 text-xs bg-primary text-white w-[18px] h-[18px] rounded-full flex items-center justify-center">
               {getCartCount()}
             </span>
           </div>
 
           <button onClick={() => setOpen(!open)}>
-            <img src={assets.menu_icon} />
+            <LazyImage src={assets.menu_icon} />
           </button>
         </div>
 

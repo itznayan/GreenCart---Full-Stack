@@ -4,6 +4,7 @@ import { assets, dummyAddress } from "../assets/assets";
 import toast from "react-hot-toast";
 import Layer from "../utils/Layer";
 import { useTranslation } from "react-i18next";
+import LazyImage from "../components/LazyImage";
 const Cart = () => {
   const { t } = useTranslation();
   const {
@@ -140,7 +141,7 @@ const Cart = () => {
                 }}
                 className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded"
               >
-                <img
+                <LazyImage
                   className="max-w-full h-full object-cover"
                   src={product.image[0]}
                   alt={product.name}
@@ -150,7 +151,8 @@ const Cart = () => {
                 <p className="hidden md:block font-semibold">{product.name}</p>
                 <div className="font-normal text-gray-500/70">
                   <p>
-                    {t("weight")}: <span>{product.weight || t("notAvailable")}</span>
+                    {t("weight")}:{" "}
+                    <span>{product.weight || t("notAvailable")}</span>
                   </p>
                   <div className="flex items-center">
                     <p>{t("qty")}:</p>
@@ -183,7 +185,7 @@ const Cart = () => {
               onClick={() => removeFromCart(product._id)}
               className="cursor-pointer mx-auto"
             >
-              <img
+              <LazyImage
                 src={assets.remove_icon}
                 alt="remove"
                 className="inline-block w-6 h-6"
@@ -199,7 +201,7 @@ const Cart = () => {
           }}
           className="group cursor-pointer flex items-center mt-8 gap-2 text-primary font-medium"
         >
-          <img
+          <LazyImage
             className="group-hover:-translate-x-1 transition"
             src={assets.arrow_right_icon_colored}
             alt="arrow"
@@ -213,7 +215,9 @@ const Cart = () => {
         <hr className="border-gray-300 my-5" />
 
         <div className="mb-6">
-          <p className="text-sm font-medium uppercase">{t("deliveryAddress")}</p>
+          <p className="text-sm font-medium uppercase">
+            {t("deliveryAddress")}
+          </p>
           <div className="relative flex justify-between items-start mt-2">
             <p className="text-gray-500">
               {selectedAddress
@@ -250,7 +254,9 @@ const Cart = () => {
             )}
           </div>
 
-          <p className="text-sm font-medium uppercase mt-6">{t("paymentMethod")}</p>
+          <p className="text-sm font-medium uppercase mt-6">
+            {t("paymentMethod")}
+          </p>
 
           <select
             onChange={(e) => setPaymentOption(e.target.value)}

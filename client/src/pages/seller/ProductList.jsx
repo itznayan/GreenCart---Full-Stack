@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast'
+import LazyImage from '../../components/LazyImage'
 
 const ProductList = () => {
     const {products, currency, axios, fetchProducts} = useAppContext()
@@ -37,7 +38,7 @@ const ProductList = () => {
                                 <tr key={product._id} className="border-t border-gray-500/20">
                                     <td className="md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
                                         <div className="border border-gray-300 rounded p-2">
-                                            <img src={product.image[0]} alt="Product" className="w-16" />
+                                            <LazyImage src={product.image[0]} alt="Product" className="w-16" />
                                         </div>
                                         <span className="truncate max-sm:hidden w-full">{product.name}</span>
                                     </td>
